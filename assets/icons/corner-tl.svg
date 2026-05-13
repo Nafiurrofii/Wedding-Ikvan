@@ -1,0 +1,33 @@
+<svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+  <g opacity="0.7">
+    <!-- Main branch -->
+    <path d="M 8 152 Q 35 105 72 72 Q 105 42 148 12" stroke="#7B8776" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+    <!-- Secondary branch -->
+    <path d="M 18 135 Q 40 100 65 80" stroke="#B7BFAE" stroke-width="0.9" fill="none" stroke-linecap="round" opacity="0.6"/>
+    <!-- Leaf 1 -->
+    <ellipse cx="42" cy="112" rx="17" ry="7.5" fill="#B7BFAE" transform="rotate(-35 42 112)" opacity="0.75"/>
+    <path d="M 33 105 Q 42 112 51 119" stroke="#7B8776" stroke-width="0.6" fill="none" opacity="0.5"/>
+    <!-- Leaf 2 -->
+    <ellipse cx="32" cy="126" rx="14" ry="6" fill="#DDE3D7" transform="rotate(-18 32 126)" opacity="0.65"/>
+    <!-- Leaf 3 -->
+    <ellipse cx="64" cy="85" rx="19" ry="8" fill="#7B8776" transform="rotate(-52 64 85)" opacity="0.65"/>
+    <path d="M 53 80 Q 64 85 75 90" stroke="#5E665A" stroke-width="0.6" fill="none" opacity="0.45"/>
+    <!-- Leaf 4 -->
+    <ellipse cx="55" cy="96" rx="13" ry="5.5" fill="#B7BFAE" transform="rotate(-42 55 96)" opacity="0.55"/>
+    <!-- Leaf 5 -->
+    <ellipse cx="89" cy="60" rx="16" ry="7" fill="#B7BFAE" transform="rotate(-63 89 60)" opacity="0.65"/>
+    <!-- Leaf 6 -->
+    <ellipse cx="78" cy="70" rx="12" ry="5" fill="#DDE3D7" transform="rotate(-58 78 70)" opacity="0.55"/>
+    <!-- Leaf 7 -->
+    <ellipse cx="114" cy="38" rx="14" ry="6" fill="#7B8776" transform="rotate(-72 114 38)" opacity="0.6"/>
+    <!-- Leaf 8 -->
+    <ellipse cx="132" cy="22" rx="11" ry="4.5" fill="#B7BFAE" transform="rotate(-78 132 22)" opacity="0.55"/>
+    <!-- Gold berries -->
+    <circle cx="50" cy="107" r="2.8" fill="#C5A46D" opacity="0.55"/>
+    <circle cx="70" cy="82" r="2.2" fill="#C5A46D" opacity="0.45"/>
+    <circle cx="95" cy="57" r="2" fill="#C5A46D" opacity="0.45"/>
+    <!-- Small leaf detail lines -->
+    <path d="M 88 55 Q 94 60 100 65" stroke="#7B8776" stroke-width="0.5" fill="none" opacity="0.4"/>
+    <path d="M 113 33 Q 118 38 123 43" stroke="#7B8776" stroke-width="0.5" fill="none" opacity="0.4"/>
+  </g>
+</svg>
