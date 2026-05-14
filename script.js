@@ -48,6 +48,7 @@ function initOpening() {
   btn.addEventListener('click', () => {
     if (App.opened) return;
     App.opened = true;
+    requestFullscreenMode();
     opening.classList.add('fade-out');
 
     setTimeout(() => {
@@ -65,6 +66,30 @@ function initOpening() {
       initBottomNav();
     }, 900);
   });
+}
+
+function requestFullscreenMode() {
+  const root = document.documentElement;
+
+  if (document.fullscreenElement) return;
+
+  try {
+    if (root.requestFullscreen) {
+      root.requestFullscreen().catch(() => {});
+      return;
+    }
+
+    if (root.webkitRequestFullscreen) {
+      root.webkitRequestFullscreen();
+      return;
+    }
+
+    if (root.msRequestFullscreen) {
+      root.msRequestFullscreen();
+    }
+  } catch (error) {
+    console.warn('Fullscreen tidak tersedia:', error);
+  }
 }
 
 function initMusic() {
@@ -170,26 +195,42 @@ function initScrollReveal() {
 function initBottomNav() {
   const links = Array.from(document.querySelectorAll('.nav-item[data-section]'));
   if (!links.length) return;
-
-  const sections = [...new Set(links.map((link) => link.dataset.section))];
+  const navTargets = links.map((link) => {
+    const href = link.getAttribute('href') || '';
+    const targetId = href.startsWith('#') ? href.slice(1) : link.dataset.section;
+    return {
+      link,
+      targetId,
+      target: document.getElementById(targetId),
+    };
+  }).filter((item) => item.target);
 
   links.forEach((link) => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      const target = document.getElementById(link.dataset.section);
+      const href = link.getAttribute('href') || '';
+      const targetId = href.startsWith('#') ? href.slice(1) : link.dataset.section;
+      const target = document.getElementById(targetId);
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 
   const updateActive = () => {
-    let current = sections[0] || '';
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el && window.scrollY >= el.offsetTop - 140) current = id;
+    let current = navTargets[0]?.targetId || '';
+    let bestTop = -Infinity;
+
+    navTargets.forEach(({ targetId, target }) => {
+      const top = target.getBoundingClientRect().top;
+      if (top <= 140 && top > bestTop) {
+        bestTop = top;
+        current = targetId;
+      }
     });
 
     links.forEach((link) => {
-      link.classList.toggle('active', link.dataset.section === current);
+      const href = link.getAttribute('href') || '';
+      const targetId = href.startsWith('#') ? href.slice(1) : link.dataset.section;
+      link.classList.toggle('active', targetId === current);
     });
   };
 
