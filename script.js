@@ -8,6 +8,34 @@ const App = {
 
 const RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyVgVBFWl2XJxgr51diPo6mwNUL_srSEI9pc-cgQxLGTTrUxmrnqO4K2hdsKZVujyMX/exec';
 
+function initGuestName() {
+  const guestName = getGuestNameFromUrl();
+  const targets = [
+    document.getElementById('guest-name-opening'),
+    document.getElementById('guest-name-hero'),
+  ];
+
+  targets.forEach((el) => {
+    if (el) el.textContent = guestName;
+  });
+}
+
+function getGuestNameFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const rawName = params.get('to') || params.get('guest') || params.get('nama');
+
+  if (!rawName) return 'Tamu Undangan';
+
+  return normalizeGuestName(rawName);
+}
+
+function normalizeGuestName(value) {
+  return value
+    .replace(/\+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim() || 'Tamu Undangan';
+}
+
 function initOpening() {
   const btn = document.getElementById('btn-open');
   const opening = document.getElementById('opening');
@@ -323,6 +351,7 @@ shakeStyle.textContent = `
 document.head.appendChild(shakeStyle);
 
 document.addEventListener('DOMContentLoaded', () => {
+  initGuestName();
   initOpening();
   initMusic();
   initCountdown();

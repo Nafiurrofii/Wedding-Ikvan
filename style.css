@@ -228,6 +228,34 @@ main {
   margin-bottom: 18px;
 }
 
+.cover-guest {
+  width: min(100%, 250px);
+  margin: 0 auto 18px;
+  padding: 14px 18px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.16);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 12px 28px rgba(16, 28, 23, .08);
+}
+
+.cover-guest-label {
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.78);
+  margin-bottom: 6px;
+}
+
+.cover-guest-name {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--white);
+  word-break: break-word;
+}
+
 .cover-ornament {
   width: 96px;
   height: 14px;
@@ -481,6 +509,23 @@ main {
 .opening-screen .cover-date,
 .section-cover .cover-date {
   color: rgba(255,255,255,.94);
+}
+
+.opening-screen .cover-guest,
+.section-cover .cover-guest {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.16);
+}
+
+.opening-screen .cover-guest-name,
+.section-cover .cover-guest-name {
+  color: var(--white);
+  text-shadow: 0 2px 12px rgba(0,0,0,.16);
+}
+
+.opening-screen .cover-guest-label,
+.section-cover .cover-guest-label {
+  color: rgba(255,255,255,.76);
 }
 
 .opening-screen .cover-ornament::before,
