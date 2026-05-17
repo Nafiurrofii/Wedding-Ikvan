@@ -30,10 +30,19 @@ function getGuestNameFromUrl() {
 }
 
 function normalizeGuestName(value) {
-  return value
+  if (!value) return 'Tamu Undangan';
+  
+  const cleaned = value
     .replace(/\+/g, ' ')
     .replace(/\s+/g, ' ')
-    .trim() || 'Tamu Undangan';
+    .trim();
+
+  if (!cleaned) return 'Tamu Undangan';
+
+  return cleaned
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
 }
 
 function initOpening() {
